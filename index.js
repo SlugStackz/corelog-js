@@ -1,5 +1,5 @@
-console.log("✅ Node is running index.js correctly");
-// CoreLog v0 — first real program
+// CoreLog v1 — CRUD-ish in memory
+
 const logs = [];
 
 function addLog(title, description) {
@@ -13,7 +13,41 @@ function addLog(title, description) {
   return log;
 }
 
-addLog("Start", "First CoreLog entry");
-addLog("Progress", "Node, Git, and PowerShell are working");
+function getAllLogs() {
+  return logs;
+}
 
-console.log(logs);
+function getLogById(id) {
+  return logs.find(log => log.id === id);
+}
+
+function deleteLog(id) {
+  const index = logs.findIndex(log => log.id === id);
+
+  if (index === -1) {
+    return false;
+  }
+
+  logs.splice(index, 1);
+  return true;
+}
+
+// ---- TEST RUN ----
+console.log("\n--- ADD ---");
+console.log(addLog("Start", "First CoreLog entry"));
+console.log(addLog("Progress", "Added CRUD functions"));
+
+console.log("\n--- GET ALL ---");
+console.log(getAllLogs());
+
+console.log("\n--- GET BY ID (1) ---");
+console.log(getLogById(1));
+
+console.log("\n--- GET BY ID (999) ---");
+console.log(getLogById(999));
+
+console.log("\n--- DELETE (1) ---");
+console.log(deleteLog(1));
+
+console.log("\n--- FINAL LOGS ---");
+console.log(getAllLogs());
