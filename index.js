@@ -1,17 +1,10 @@
-const { addLog, getAllLogs, getLogById, deleteLog } = require("./logs");
+console.log(`
+CoreLog is now an API.
 
-console.log("\n--- ADD ---");
-console.log(addLog("Start", "Now using file persistence"));
-console.log(addLog("Progress", "Split code into modules"));
+Start the server:
+  node server.js
 
-console.log("\n--- GET ALL ---");
-console.log(getAllLogs());
-
-console.log("\n--- GET BY ID (1) ---");
-console.log(getLogById(1));
-
-console.log("\n--- DELETE (1) ---");
-console.log(deleteLog(1));
-
-console.log("\n--- FINAL LOGS ---");
-console.log(getAllLogs());
+Then test:
+  http://127.0.0.1:3001/health
+  http://127.0.0.1:3001/logs
+`);
