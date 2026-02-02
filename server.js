@@ -11,7 +11,14 @@ app.get("/health", (req, res) => {
 
 // Get all logs
 app.get("/logs", (req, res) => {
-  res.json(getAllLogs());
+  const { title } = req.query;
+  let logs = getAllLogs();
+
+  if (title) {
+    logs = logs.filter(log => log.title === title);
+  }
+  
+  res.json(logs());
 });
 
 // Get one log by id
