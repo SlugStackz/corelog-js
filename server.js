@@ -1,5 +1,5 @@
 const express = require("express");
-const { addLog, getAllLogs, getLogById, deleteLog } = require("./logs");
+const { addLog, getAllLogs, getLogById, deleteLog, getLogCount } = require("./logs");
 
 const app = express();
 app.use(express.json());
@@ -7,6 +7,11 @@ app.use(express.json());
 // Health check
 app.get("/health", (req, res) => {
   res.json({ status: "ok" });
+});
+
+// Get log count
+app.get("/logs/count", (req, res) => {
+  res.json({ count: getLogCount() });
 });
 
 // Get all logs
@@ -18,7 +23,7 @@ app.get("/logs", (req, res) => {
     logs = logs.filter(log => log.title === title);
   }
   
-  res.json(logs());
+  res.json(logs);
 });
 
 // Get one log by id

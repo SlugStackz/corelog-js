@@ -17,6 +17,10 @@ function addLog(title, description) {
   return log;
 }
 
+function getLogCount () {
+  return logs.length;
+}
+
 function getAllLogs() {
   return logs;
 }
@@ -34,4 +38,4 @@ function deleteLog(id) {
   return true;
 }
 
-module.exports = { addLog, getAllLogs, getLogById, deleteLog };
+module.exports = { addLog, getAllLogs, getLogById, deleteLog, getLogCount };
