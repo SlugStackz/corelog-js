@@ -1,5 +1,5 @@
 const express = require("express");
-const { addLog, getAllLogs, getLogById, deleteLog, getLogCount } = require("./logs");
+const { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog } = require("./logs");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +14,14 @@ app.get("/logs/count", (req, res) => {
   res.json({ count: getLogCount() });
 });
 
+// Get lastest log
+app.get("/logs/latest", (req, res) => {
+  const latest = getLatestLog();
+  if (!latest) {
+    return res.status(404).json({ error: "No logs yet" });
+  }
+  res.json(latest);
+})
 // Get all logs
 app.get("/logs", (req, res) => {
   const { title } = req.query;

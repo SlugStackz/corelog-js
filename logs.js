@@ -21,6 +21,17 @@ function getLogCount () {
   return logs.length;
 }
 
+function getLatestLog () {
+  if (logs.length === 0) return null;
+
+  let latest = logs[0];
+  for (const log of logs) {
+    if (log.createdAt > latest.createdAt) {
+      latest = log;
+    }
+  }
+  return latest;
+}
 function getAllLogs() {
   return logs;
 }
@@ -38,4 +49,4 @@ function deleteLog(id) {
   return true;
 }
 
-module.exports = { addLog, getAllLogs, getLogById, deleteLog, getLogCount };
+module.exports = { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog };
