@@ -1,5 +1,5 @@
 const express = require("express");
-const { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog } = require("./logs");
+const { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog, updateLog } = require("./logs");
 
 const app = express();
 app.use(express.json());
@@ -57,6 +57,35 @@ app.post("/logs", (req, res) => {
 
   const created = addLog(title, description);
   res.status(201).json(created);
+});
+
+// Update a log by id
+app.put("/logs/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const { title, description } = req.body;
+
+  // Require at least one field to update
+  const hasTitle = title !== undefined;
+  const hasDescription = description !== undefined;
+
+  if (!hasTitle && !hasDescription) {
+    return res.status(400).json({ error: "Provide title and/or description to update" });
+  }
+
+  // Validate if provided
+  if (hasTitle && (!title || typeof title !== "string")) {
+    return res.status(400).json({ error: "title must be a non-empty string" });
+  }
+  if (hasDescription && (!description || typeof description !== "string")) {
+    return res.status(400).json({ error: "description must be a non-empty string" });
+  }
+
+  const updated = updateLog(id, { title, description });
+  if (!updated) {
+    return res.status(404).json({ error: "Log not found" });
+  }
+
+  res.json(updated);
 });
 
 // Delete a log by id

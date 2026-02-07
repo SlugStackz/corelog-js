@@ -49,4 +49,21 @@ function deleteLog(id) {
   return true;
 }
 
-module.exports = { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog };
+function updateLog(id, updates) {
+  const log = logs.find(l => l.id === id);
+  if (!log) return null;
+
+  if (updates.title !== undefined) {
+    log.title = updates.title;
+  }
+
+  if (updates.description !== undefined) {
+    log.description = updates.description;
+  }
+
+  saveLogs(logs);
+  return log;
+}
+
+module.exports = { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog, updateLog };
+
