@@ -3,6 +3,7 @@ const { addLog, getAllLogs, getLogById, deleteLog, getLogCount, getLatestLog } =
 
 const app = express();
 app.use(express.json());
+app.use(express.static("public"));
 
 // Health check
 app.get("/health", (req, res) => {

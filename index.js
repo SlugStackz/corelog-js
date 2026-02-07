@@ -8,3 +8,4 @@ Then test:
   http://127.0.0.1:3001/health
   http://127.0.0.1:3001/logs
 `);
+const descInput = document.getElementById("descInput");

@@ -1,44 +1,8 @@
 [
   {
-    "id": 2,
-    "title": "Progress",
-    "description": "Split code into modules",
-    "createdAt": "2026-02-02T21:54:20.293Z"
-  },
-  {
-    "id": 3,
-    "title": "Start",
-    "description": "Now using file persistence",
-    "createdAt": "2026-02-02T21:57:32.342Z"
-  },
-  {
-    "id": 4,
-    "title": "Progress",
-    "description": "Split code into modules",
-    "createdAt": "2026-02-02T21:57:32.345Z"
-  },
-  {
-    "id": 5,
-    "title": "Start",
-    "description": "Now using file persistence",
-    "createdAt": "2026-02-02T21:57:56.232Z"
-  },
-  {
-    "id": 6,
-    "title": "Progress",
-    "description": "Split code into modules",
-    "createdAt": "2026-02-02T21:57:56.234Z"
-  },
-  {
-    "id": 7,
-    "title": "Start",
-    "description": "Now using file persistence",
-    "createdAt": "2026-02-02T21:58:24.354Z"
-  },
-  {
-    "id": 8,
-    "title": "Progress",
-    "description": "Split code into modules",
-    "createdAt": "2026-02-02T21:58:24.357Z"
+    "id": 1,
+    "title": "yo",
+    "description": "sup",
+    "createdAt": "2026-02-07T01:49:58.146Z"
   }
 ]

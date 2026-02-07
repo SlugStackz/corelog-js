@@ -3,6 +3,8 @@ const path = require("path");
 
 const DATA_PATH = path.join(__dirname, "logs.json");
 
+const DATA_FILE = "logs-dev.json";
+
 function loadLogs() {
   try {
     const raw = fs.readFileSync(DATA_PATH, "utf8");
