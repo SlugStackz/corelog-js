@@ -1,35 +1,88 @@
-# CoreLog
+# CoreLog — Full Stack Logging Application
 
-CoreLog is a simple backend API built with Node.js and Express that allows you to create, view, and delete log entries.  
-It uses a JSON file for persistence, so data survives server restarts.
+CoreLog is a lightweight full-stack logging application built to practice backend API design, client/server integration, and debugging asynchronous workflows. It allows users to create and delete log entries through a browser interface backed by a REST API.
 
-This project was built as a learning exercise to understand backend fundamentals such as APIs, routing, persistence, and project structure.
+This project was developed as part of my transition into software development and demonstrates hands-on experience building and integrating frontend and backend components.
 
 ---
 
-## What This Project Does
+## Features
 
-- Starts an HTTP API server using Express
-- Allows clients to:
-  - Create logs
-  - View all logs
-  - View a single log by ID
-  - Delete logs
-  - Count logs
-  - View latest logs
-- Persists data to a JSON file so logs are not lost when the server stops
+* Create log entries through a web interface
+* Delete existing entries
+* RESTful API backend
+* JSON-based persistence layer
+* Modular server architecture
+* Client/server communication using Fetch API
 
 ---
 
 ## Tech Stack
 
-- Node.js
-- Express
-- JavaScript
-- File-based persistence (JSON)
+**Frontend**
+
+* HTML
+* CSS
+* JavaScript
+
+**Backend**
+
+* Node.js
+* Express
+
+**Other Tools**
+
+* Git
+* JSON data storage
 
 ---
 
 ## Project Structure
 
-(See full structure below)
+server.js — Express server entry point
+logs.js — Routing and logic layer
+storage.js — Persistence layer
+logs.sample.json — Example data format
+public/ — Frontend interface
+
+---
+
+## Running Locally
+
+Clone the repo and install dependencies:
+
+```
+npm install
+```
+
+Start the server:
+
+```
+node server.js
+```
+
+Then open your browser:
+
+```
+http://localhost:3000
+```
+
+---
+
+## What I Learned
+
+* REST API construction and routing
+* CRUD data handling
+* Debugging client/server contract mismatches
+* Async request flow reasoning
+* Modular code organization
+* Version control workflow using Git
+
+---
+
+## Future Improvements
+
+* Edit/update log entries
+* Search/filter functionality
+* UI enhancements
+* Persistent database integration
