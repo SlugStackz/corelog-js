@@ -32,8 +32,9 @@ resetBtn.addEventListener("click", () => {
     li.style.alignItems = "center";
 
     const text = document.createElement("span");
+    text.className = "log-text";
     text.textContent = `${log.title} — ${log.description}`;
-    text.style.flex = "1";
+
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";

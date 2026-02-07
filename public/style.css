@@ -54,7 +54,10 @@ input {
     width: 280px;
 }
 
-li:hover {
-    text-decoration: line-through;
-    opacity: 0.8;
+#logList .log-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 5px;
 }
