@@ -4,8 +4,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const list = document.getElementById("logList");
   const descInput = document.getElementById("descInput");
   const changeBtn = document.getElementById("changeBtn");
-const resetBtn = document.getElementById("resetBtn");
-const mainTitle = document.getElementById("mainTitle");
+  const resetBtn = document.getElementById("resetBtn");
+  const mainTitle = document.getElementById("mainTitle");
+  const searchInput = document.getElementById("searchInput");
+  const sortSelect = document.getElementById("sortSelect");
+  let allLogsCache = [];
 
 changeBtn.addEventListener("click", () => {
   mainTitle.textContent = "Button Clicked ✅";
@@ -15,12 +18,33 @@ resetBtn.addEventListener("click", () => {
   mainTitle.textContent = "Zach's First Frontend Page";
 });
 
+function sortLogs(logs, mode) {
+  const sorted = [...logs];
+
+  if (mode === "newest") {
+    sorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
+  if (mode === "oldest") {
+    sorted.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+  }
+
+  if (mode === "title") {
+    sorted.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  return sorted;
+}
+
   // Load logs from backend and render
   async function refreshLogs() {
-    const res = await fetch("/logs");
-    const logs = await res.json();
-    renderLogs(logs);
-  }
+  const res = await fetch("/logs");
+  allLogsCache = await res.json();
+
+  const sorted = sortLogs(allLogsCache, sortSelect.value);
+  renderLogs(sorted);
+}
+
 
   function renderLogs(logs) {
   list.innerHTML = "";
@@ -127,6 +151,23 @@ function handleEnter(event) {
 
 input.addEventListener("keydown", handleEnter);
 descInput.addEventListener("keydown", handleEnter);
+
+searchInput.addEventListener("input", () => {
+  const term = searchInput.value.toLowerCase();
+
+  const filtered = allLogsCache.filter(log =>
+    log.title.toLowerCase().includes(term) ||
+    log.description.toLowerCase().includes(term)
+  );
+
+  renderLogs(filtered);
+});
+
+sortSelect.addEventListener("change", () => {
+  const sorted = sortLogs(allLogsCache, sortSelect.value);
+  renderLogs(sorted);
+});
+
 
 // Initial load
 refreshLogs();
